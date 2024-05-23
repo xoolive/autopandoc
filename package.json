@@ -1,47 +1,62 @@
 {
   "name": "autopandoc",
   "displayName": "autopandoc",
-  "description": "Compile current Markdown file with pandoc",
+  "description": "Run pandoc on Markdown file based on yaml header options",
   "version": "0.0.1",
+  "publisher": "Xavier Olive",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xoolive/autopandoc"
+  },
   "engines": {
     "vscode": "^1.54.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
-  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
   "contributes": {
+    "keybindings": [
+      {
+        "command": "autopandoc.runPandoc",
+        "key": "ctrl+P P",
+        "mac": "cmd+P P",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
+      }
+    ],
     "commands": [
       {
-        "command": "autopandoc.helloWorld",
-        "title": "Hello World"
+        "command": "autopandoc.runPandoc",
+        "title": "autopandoc: Run Pandoc"
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.54.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.54.0",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
-    "eslint": "^8.57.0",
-    "typescript": "^5.4.5",
-    "ts-loader": "^9.5.1",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.9",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "gray-matter": "^4.0.3",
+    "path": "^0.12.7"
   }
 }
