@@ -2,8 +2,8 @@
   "name": "autopandoc",
   "displayName": "autopandoc",
   "description": "Run pandoc on Markdown file based on yaml header options",
-  "version": "0.0.1",
-  "publisher": "Xavier Olive",
+  "version": "0.0.2",
+  "publisher": "xoolive",
   "license": "MIT",
   "repository": {
     "type": "git",

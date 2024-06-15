@@ -30,3 +30,24 @@ Note: The command is executed from the folder containing the current file.
 You need to have [pandoc](https://pandoc.org) installed, with, if need be, the proper LaTeX compilers.
 
 Then, look for extension `xoolive.autopandoc` (or run `ext install xoolive.autopandoc`)
+
+## Development
+
+Generate the template for VSCode extensions ([instructions](https://code.visualstudio.com/api/get-started/your-first-extension))
+
+```sh
+npm install --global yo generator-code
+```
+
+Compile locally:
+
+```sh
+npm run compile
+```
+
+Publish the extension ([instructions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension))
+
+```sh
+npm install -g @vscode/vsce
+vsce publish
+```
